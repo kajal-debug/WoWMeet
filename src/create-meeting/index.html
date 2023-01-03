@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>WoWMeet - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
+
+    <!-- App css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+
+</head>
+
+<body id="body" class="dark-sidebar">
+    <!-- leftbar-tab-menu -->
+    <div class="left-sidebar">
+        <!-- <div class="brand">
+            <a href="./" class="logo">
+                <span>
+                    <img src="assets/images/" alt="logo-small" class="logo-sm">
+                </span>
+                <span>
+                    <img src="assets/images/" alt="logo-large" class="logo-lg logo-light">
+                    <img src="assets/images/" alt="logo-large" class="logo-lg logo-dark">
+                </span>
+            </a>
+        </div> -->
+        <div class="sidebar-user-pro border-end">
+            <div class="position-relative mx-auto d-flex justify-content-center p-3">
+                <img src="assets/images/users/user-4.jpg" alt="user" class="rounded-circle thumb-xxl">
+                <div id="edit" style=" position: absolute; z-index: 1;
+                margin: 20px;
+                /* color: #2d39cc; */
+                margin-right: -31px;
+                font-size: 20px;
+                bottom: 0;">
+                    <i class="far fa-edit" style="
+                    color: #2d39cc;
+                   
+                    font-size: 20px;
+                    "></i>
+                </div>
+            </div>
+            <div class="media-body ms-2 user-detail text-center">
+                <h5 class="font-22 m-0 " id="display-name">Sachin Pradhan</h5>
+                <p class="opacity-50 mb-0" id="display-mail">sachin@wowexp.ai</p>
+            </div>
+        </div>
+
+        <div class="menu-content h-100" data-simplebar>
+            <div class="menu-body navbar-vertical">
+                <div class="collapse navbar-collapse tab-content" id="sidebarCollapse">
+                    <ul class="navbar-nav tab-pane active" id="Main" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard/"><i
+                                    class="ti ti-brand-hipchat menu-icon"></i><span>Dashboard</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/meetings/"><i
+                                    class="ti ti-headphones menu-icon"></i><span>Meeting
+                                    rooms</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/"><i
+                                    class="ti ti-calendar menu-icon"></i><span>Users</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end left-sidenav-->
+
+    <!-- Top Bar Start -->
+    <div class="topbar d-none">
+        <nav class="navbar-custom" id="navbar-custom">
+            <ul class="list-unstyled topbar-nav float-end mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="ti ti-bell"></i>
+                        <span class="alert-badge"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+
+                        <h6
+                            class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                            Notifications <span class="badge bg-soft-primary badge-pill">2</span>
+                        </h6>
+                        <div class="notification-menu" data-simplebar>
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">2 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-chart-arcs"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">10 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-device-computer-camera"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                        <small class="text-muted mb-0">It is a long established fact that a
+                                            reader.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">40 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-diamond"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">1 hr ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-drone"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                        <small class="text-muted mb-0">It is a long established fact that a
+                                            reader.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-users"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                        </div>
+                        <!-- All-->
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                            View all <i class="fi-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled topbar-nav mb-0">
+                <li>
+                    <button class="nav-link button-menu-mobile nav-icon" id="togglemenu">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                </li>
+                <!-- <li class="hide-phone app-search">
+                    <form role="search" action="#" method="get">
+                        <input type="search" name="search" class="form-control top-search mb-0"
+                            placeholder="Type text...">
+                        <button type="submit"><i class="ti ti-search"></i></button>
+                    </form>
+                </li> -->
+            </ul>
+        </nav>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- right-tab-menu -->
+    <div class="right-sidebar">
+        <div class=" m-2">
+            <div class="col-md-12 col-lg-12 p-5 bg-dark text-center text-white">
+                <p>Steps completed</p>
+
+            </div>
+            <h4 class="">Steps</h4>
+
+            <div class="py-3 px-3" id="environmentstep">
+                Step 1
+                <h5 class="">Select environment</h5>
+                <i>The selected environment will be your meeting room.</i>
+            </div>
+
+            <div class="py-3 px-3 my-2" id="meetingdetailsstep">
+                Step 2
+                <h5 class="">Add meeting details</h5>
+                <i>Add meeting name, date & time for the meeting room.</i>
+            </div>
+
+            <div class="py-3 px-3 my-2" id="participantsstep">
+                Step 3
+                <h5 class="">Add participants</h5>
+                <i>You can only add the members you approved.</i>
+            </div>
+
+            <button id="createmeeting" type="button" class="btn btn-primary  w-100" id="createmeeting"
+                onclick="createMeeting()">Create
+                meeting</button>
+        </div>
+    </div>
+    <!-- end right-sidenav-->
+
+    <div class="page-wrapper">
+        <div class="page-content-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+
+                            <h4 class="">Create meeting room</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" id="environment">
+                    <h5 class="">Select meeting room environment</h5>
+                    <div class="radio-with-Icon">
+                        <p class="col-lg-2 radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="environment-1" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+                            <label for="environment-1">
+                                <img class="img-fluid" src="assets/images/small/img-1.jpg" alt="image-1">
+                            </label>
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="row" id="meetingdetails">
+                    <h5 class="">Add meeting details</h5>
+
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <label for="meetingname">Meeting name</label>
+                            <input type="text" class="form-control" id="meetingname" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="date">Date</label>
+                            <input class="form-control" type="date" id="date-input" required />
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="time">Time</label>
+                            <input class="form-control" type="time" value="13:45:00" id="time-input" required>
+                        </div>
+                    </div>
+                    <div class="">
+                        <h5 class="">Meeting materials</h5>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="meetingmaterial">
+                        <!-- <img src="../../config/image/Employee-2img-1.jpg" alt="noimg" width="300px"> -->
+                    </div>
+                    <div class="">
+                        <h5 class="">Uploading materials</h5>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="uploadmaterial"  style="border: 2px  dashed crimson;">
+                        <form id="fileuploadfor">
+                            <p class="text-primary" id="uploadfile"  style="cursor: pointer;
+                            "><i class="fa fa-upload" aria-hidden="true"></i>uploadmaterial</p>
+                            <input type="file" id="files" name="images" style="display: none;" multiple />
+                            <!-- <button type="submit"  style="display: none;" ></button> -->
+                            
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row" id="participants">
+                <!-- <div class="">
+                        <h5 class="">Meeting materials</h5>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="meetingmaterial">
+                         <img src="../../config/image/Employee-2img-1.jpg" alt="noimg" width="300px"> -->
+                <!-- </div>
+                    <div class="">
+                        <h5 class="">Uploading materials</h5>
+                        <i class="fa fa-times-circle"></i>
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="uploadmaterial">
+                        <form  id="fileuploadfor">
+                        <p class="text-primary" id="uploadfile" style="cursor: pointer;">uploadmaterial</p>
+                        <input type="file" id="files" name="images" style="display: none;" multiple /> -->
+                <!-- <button type="submit"  style="display: none;" ></button> -->
+                <!-- </form>
+                    </div>  -->
+                <div class="" >
+                    <a id="add-members" type="button" class="btn btn-light m-1 p-0 float-end">
+                        <!-- <h5 class="text-primary d-flex align-items-center">Add members
+                            </h5> -->
+                        <button type="button"  class="btn btn-light btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalCenter" style="font-weight: 400;
+                                font-size: 17px;
+                                color: blue;
+                                text-transform: uppercase;">
+                            Add members
+                        </button>
+                    </a>
+                    <h5 class="">Add participants</h5>
+                </div>
+                <div class="col-md-12 col-lg-12 p-5 bg-gray-alt " style="font-size: 13px;" id="adduser"></div>
+                <div class="">
+
+                    <h5 class="">Add suggested people</h5>
+                </div>
+                <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="suggested">
+                    <!-- <p>You can only add members that you have approved and they will be listed here.</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h6 class="modal-title m-0" id="exampleModalCenterTitle">Add members</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <div id="team">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Javascript  -->
+
+    <!-- <script src="assets/plugins/apexcharts/apexcharts.min.js"></script> -->
+    <!-- <script src="assets/pages/analytics-index.init.js"></script> -->
+
+    <!-- App js -->
+    <script src="assets/js/jquery-3.6.0.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="./main.js"></script>
+    <script>
+        document.getElementById('display-name').innerText = localStorage.name;
+        document.getElementById('display-mail').innerText = localStorage.email;
+        const step1 = document.getElementById('environmentstep');
+const step2 = document.getElementById('meetingdetailsstep');
+// const uploadfile = document.getElementById('uploadfile');
+const step3 = document.getElementById('participantsstep');
+const addmembers = document.getElementById('add-members');
+const environment = document.getElementById('environment');
+const participants = document.getElementById('participants');
+const meetingdetails = document.getElementById('meetingdetails');
+const createmeeting = document.getElementById('createmeeting');
+        let usersList = [];
+        var createmeetingroom = document.getElementById('createmeetingroom');
+        var fileuploadfor = document.getElementById('fileuploadfor')
+
+        var uploadfile = document.getElementById('uploadfile');
+        var file = document.getElementById('files');
+        meetingdetails.style.display='none';
+    participants.style.display='none';
+    step1.style.border='1px solid red';
+    step1.style.opacity=0.2;
+    step1.style.borderRadius= "5px";
+    createmeeting.disabled=true;
+environment.addEventListener('click',function(){
+    meetingdetails.style.display='';
+    step1.style.border='1px solid green';
+    step1.style.opacity=1;
+    step1.style.borderRadius= "5px";
+    step2.style.border='1px solid red';
+    step2.style.opacity=0.2;
+    step2.style.borderRadius= "5px";
+})
+        uploadfile.addEventListener('click', function () {
+            console.log("hii used for file upload")
+            file.click();
+            createmeeting.disabled=true;
+    meetingdetails.style.display='';
+    participants.style.display='';
+    step1.style.border='1px solid green';
+    step1.style.opacity=1;
+    step1.style.borderRadius= "5px";
+    step2.style.border='1px solid green';
+    step2.style.opacity=1;
+    step2.style.borderRadius= "5px";
+    step3.style.border='1px solid red';
+    step3.style.opacity=0.2;
+    step3.style.borderRadius= "5px";
+        })
+        fileuploadfor.addEventListener("change", (e) => {
+            console.log("helllo", e.target.files)
+            e.preventDefault();
+            const formData = new FormData(fileuploadfor);
+            console.log("filess", fileuploadfor)
+            var name = localStorage.name
+            axios.post("/api/upload", formData, {
+                params: { name: localStorage.name },
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+                .then((res) => {
+                    // var img =`<img src=../../config/image${res.data.file.filename}/>`
+                    // $("#meetingmaterial").html(img);
+                    // document.getElementById('meetingmaterial').textContent=res.data.file.filename;
+                    console.log(res.data.file);
+
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+        file.onchange = function () {
+            var filedata = '';
+            console.log("file uploaded", file.files[1].name, file.files[0])
+            for (var i = 0; i < file.files.length; i++) {
+                filedata += file.files[i].name;
+
+            }
+            console.log("hii")
+            console.log("filedata1234$$", filedata)
+            console.log("filedata", filedata)
+            document.getElementById('meetingmaterial').textContent = `${filedata}`;
+        };
+        function addUsers(user) {
+ 
+            // var usrdata = true;
+            // objUser = JSON.parse(user)
+            objUser = user
+            usersList.push( objUser );
+            var uniq = {};
+            var addusers = ""
+//  usersList = usersList.filter(obj => !uniq[obj.name] && (uniq[obj.name] = true))
+console.log(usersList,"h")
+const seen = new Set();
+usersList = usersList.filter(element => {
+  const isDuplicate = seen.has(element.name);
+  seen.add(element.name);
+  if (!isDuplicate) {
+    usersList.push(element);
+    document.getElementById('btn-add-user' + user.user_id).textContent = "Remove"
+console.log("userslist",usersList,isDuplicate)
+    return true;
+  }else{
+  document.getElementById('btn-add-user' + user.user_id).textContent = "Add"
+//   usersList = usersList.splice(usersList.findIndex(a => a.name === objUser.name) , 1)
+// const findIndex = usersList.findIndex(a => a.name === element.name)
+// findIndex !== -1 && usersList.splice(findIndex , 1)
+usersList.splice(usersList.indexOf(element))
+  console.log("userslist++++",usersList,isDuplicate)
+  return false;
+  }
+});
+createmeeting.disabled=false;
+    meetingdetails.style.display='';
+    participants.style.display='';
+    step1.style.border='1px solid green';
+    step1.style.opacity=1;
+    step1.style.borderRadius= "5px";
+    step2.style.border='1px solid green';
+    step2.style.opacity=1;
+    step2.style.borderRadius= "5px";
+    step3.style.border='1px solid green';
+    step3.style.opacity=1;
+    step3.style.borderRadius= "5px";
+var pevlength =usersList.length ;
+var curlength = 0;
+
+//  console.log("usersList**-",curlength,pevlength,uniq,objUser,usersList)
+                // console.log(usersList);
+            // console.log("user", objUser.name)
+                 usersList.map((item)=>{
+                    // console.log("item909090",item)
+                    addusers += `<span style='background-color:green ; margin:20px'>`+ item.name +`
+                        <i class="fa fa-circle-xmark"></i></span>`
+                    $("#adduser").html(addusers);
+                })
+//                 console.log("document.getElementById('btn-add-user' + user.user_id).textContent",
+//                     document.getElementById('btn-add-user' + user.user_id).textContent)
+//                 if(document.getElementById('btn-add-user' + user.user_id).textContent === "Remove"){
+//                     console.log("document.getElementById('btn-add-user' + user.user_id).textContent",
+//                     document.getElementById('btn-add-user' + user.user_id).textContent)
+//                     // document.getElementById('btn-add-user' + user.user_id).style.backgroundColor ='red'
+                    
+//                     // document.getElementById('btn-add-user' + user.user_id).addEventListener('click',function(){
+//                         document.getElementById('btn-add-user' + user.user_id).textContent = "Add"
+//                         usersList.splice(usersList.findIndex(a => a.name === objUser.name) , 1)
+//                 //         $("#adduser").parentNode.removeChild(addusers); 
+//                 //         usersList.map((item)=>{
+//                 //     console.log("item909090",item.name,item)
+//                 //     addusers += `<span style='background-color:green ; margin:20px'>`+ item.name +`
+//                 //         <i class="fa fa-circle-xmark"></i></span>`
+//                 //     $("#adduser").html(addusers);
+//                 // })
+// // usersList.splice( objUser );
+// console.log("usersList",usersList);
+//                     // }) 
+//                 }
+//                 // document.getElementById('btn-add-user' + user.user_id).textContent = "Remove"
+//                 if(pevlength===curlength){
+//     curlength +=1;
+//                 document.getElementById('btn-add-user' + user.user_id).textContent = "Add"
+
+//                 usersList.pop( objUser );
+//                 console.log(usersList);
+
+// }else{
+//     document.getElementById('btn-add-user' + user.user_id).textContent = "Remove"
+
+// }
+
+        }
+
+
+        function fetchUsers() {
+            var company_id = localStorage.company_id;
+            axios.defaults.headers.common['x-auth-token'] = localStorage.token;
+            
+            axios.post('/api/fetchUsers', { company_id: company_id }).then(async (response) => {
+                // console.log("response", response.data.users.length)
+                $("#team-count").text(response.data.users.length);
+                var text = "";
+                response.data.users.map((item, i, arr) => {
+                    // console.log("item", item)
+                    var image = item.name.concat(item.avatar)
+                    text += `<div class="sidebar-user-pro media">
+                                <div class="position-relative mx-auto">
+                                    ${item.avatar != '' && item.avatar != undefined ? `<img src=/uploads/${image} alt="user"  id="uploadimg" class="rounded-circle thumb-md" />` :
+                            `<img src='assets/images/users/user-4.jpg' alt="imgs"  id="uploadimg" class="rounded-circle thumb-md"/>`}
+                                </div>
+                                <div class="media-body ms-2 user-detail align-self-center">
+                                    <h5 class="font-14 m-0 " id="nameofuser">`+ item.name + `</h5>
+                                    <p class="opacity-50 mb-0">`+ item.user_type + `</p>
+                                </div>
+                                <div class="ms-2 user-detail align-self-center" style="cursor:pointer ; backgroundcolor:red" id="user-`+ item.user_id + `" onclick='addUsers(` + JSON.stringify(item).toString() + `)'>
+                                    <h5 class="font-14 m-0 " id="btn-add-user`+ item.user_id + `">ADD</h5>
+                                </div>
+                            </div>`;
+                });
+                $("#team").html(text);
+            }).catch(async (errors) => {
+                console.log("err", errors)
+            })
+        }
+        fetchUsers();
+
+        function requestUsers() {
+            var company_id = localStorage.company_id;
+            axios.defaults.headers.common['x-auth-token'] = localStorage.token;
+            axios.post('/api/requestUsers', { company_id: company_id }).then(async (response) => {
+                // console.log("response", response.data.users.length)
+                $("#team-count").text(response.data.users.length);
+                var text = "";
+                response.data.users.map((item) => {
+                    //   console.log("item",item)
+
+                    text += `
+                  <div class="media-body ms-2 user-detail align-self-center">
+                      <h5 class="font-14 m-0 text-warning">`+ item.name + `</h5>
+              </div>`;
+                });
+                // for(var i =0; i<Math.ceil(response.data.users.length/2);i++){
+                //   row = `<div class = 'row'></div>`
+                // }
+                $("#suggested").html(text);
+            }).catch(async (errors) => {
+                toastr["error"](errors.response.data.msg)
+                toastr.options = {
+                    "closeButton": true,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    //   "preventDuplicates": false,
+                    //   "onclick": null,
+                    "showDuration": "3000000",
+                    //   "hideDuration": "1000",
+                    "timeOut": "50000000",
+                    //   "extendedTimeOut": "1000",
+                    //   "showEasing": "swing",
+                    //   "hideEasing": "linear",
+                    //   "showMethod": "fadeIn",
+                    //   "hideMethod": "fadeOut"
+                }
+                // console.log("error-*--*",errors.response.data.msg)
+            })
+
+        }
+        requestUsers()
+        function curday() {
+            today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //As January is 0.
+            var yyyy = today.getFullYear();
+            var Hours = new Date().getHours();
+            var Minutes = new Date().getMinutes();
+            console.log("datetime--00", Hours + ":" + Minutes);
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+            if (Minutes < 10) Minutes = '0' + Minutes;
+            if (Hours < 10) Hours = '0' + Hours;
+            var meetingDates = document.getElementById('date-input').value = yyyy + '-' + mm + '-' + dd;
+            var meetingTime = document.getElementById('time-input').value = Hours + ":" + Minutes;
+            console.log("meetingDate.value", meetingTime)
+        };
+        curday()
+// addmembers.addEventListener('click',function(){
+//     createmeeting.disabled=false;
+//     meetingdetails.style.display='';
+//     participants.style.display='';
+//     step1.style.border='1px solid green';
+//     step1.style.opacity=1;
+//     step1.style.borderRadius= "5px";
+//     step2.style.border='1px solid green';
+//     step2.style.opacity=1;
+//     step2.style.borderRadius= "5px";
+//     step3.style.border='1px solid green';
+//     step3.style.borderRadius= "5px";
+// })
+
+        function createMeeting() {
+            console.log("hii")
+            var company_id = localStorage.company_id;
+
+            var meetingname = document.getElementById('meetingname').value;
+            var meetingDate = document.getElementById('date-input').value;
+            var meetingTime = document.getElementById('time-input').value;
+            console.log("files", file.files)
+            const files = [];
+            for (var i = 0; i < file.files.length; i++) {
+                files.push(file.files[i].name);
+
+            }
+            console.log("files",company_id,meetingname,meetingDate,meetingTime, files,usersList)
+            axios.post(`/api/createMeeting`, { company_id: company_id, meetingName: meetingname, users: usersList, meetingDate: meetingDate, meetingTime: meetingTime, files: files })
+                .then((response) => {
+                    // console.log(response.status, "respose____")
+                    if (response.status == 200) {
+                        // adminlogin();
+                        window.location.href = '/dashboard/';
+                    }
+                }).catch((err) => {
+                    console.log("err", err)
+                })
+        }
+    </script>
+
+
+</body>
+<!--end body-->
+
+</html>

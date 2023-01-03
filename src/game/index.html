@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>WoWMeet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <link href="./main.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.css">
+
+
+</head>
+
+<body>
+  <div id="message">
+    <p id="message_text"></p>
+    <button id="message_ok">OK</button>
+  </div>
+  <div id="chat">
+    <form id="msg-form" action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </div>
+
+  <!-- rtc elements -->
+  <!-- <button class="rtc-btn" id="join-btn">Join</button> -->
+  <!-- <div id="stream-wrapper">
+    <div id="video-streams"></div>
+    <div id="stream-controls">
+    </div>
+  </div> -->
+
+  <div class="ppt-container d-none" id="material-view-container">
+    <div>
+      <img id="close-material-view-container" src="./assets/images/3d-meeting-space/close.svg" alt=""
+        style="position: absolute; right: -0.5rem; top: -0.5rem;z-index: 99;" />
+    </div>
+
+    <div class="d-none">
+      <img id="full-material-view-container" src="./assets/images/3d-meeting-space/presention-chart.svg" alt=""
+        style="position: absolute; left: -0.5rem; top: -0.5rem;z-index: 99;" />
+    </div>
+  </div>
+  <!-- <button class="rtc-btn" id="ppt-btn" onclick="window.open('/pdf-viewer/', '_blank');">
+    PPT
+  </button> -->
+
+  <div class="accordion shadow">
+    <div class="navbar-cont">
+      <nav class="nav-menu" id="navbar-inner">
+        <div class="right-cont">
+          <div id="accordionExample">
+            <div id="headingOne" class="card-header shadow-sm border-0">
+              <h2 class="mb-0">
+                <button type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                  aria-controls="collapseOne" class="btn btn-link text-dark font-weight-bold collapsible-link">
+                  <span id="meeting-name">Show Members
+                    Cam</span>
+                  <!-- <img id="" src="./assets/images/3d-meeting-space/arrow-up.svg" alt="" /></button> -->
+              </h2>
+            </div>
+
+            <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+              <div class="card-body">
+                <!-- <div class="videoSlider slider" id="videoSlider">
+                </div> -->
+
+                <div class="container dragscroll videoSlider" id="videoSlider">
+                  <!-- <article>
+                    <img src="http://www.fillmurray.com/300/300" alt="">
+                  </article> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+  </div>
+
+  <div class="call-outer">
+    <div class="call-controls">
+      <div class="items row">
+        <img id="mic" src="./assets/images/3d-meeting-space/microphone-2.svg" alt="" />
+        <img id="camera" src="./assets/images/3d-meeting-space/camera.svg" alt="" />
+        <img id="leave" onclick="leaveAndRemoveLocalStream()" class="call-end-btn"
+          src="./assets/images/3d-meeting-space/call-slash.svg" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="meeting-outer row">
+
+    <div id="materials-cont" class="materials-cont">
+
+      <div>
+        <img id="close-materials" src="./assets/images/3d-meeting-space/close.svg" alt=""
+          style="position: absolute; right: -0.5rem; top: -0.5rem;" />
+      </div>
+
+      <div class="title-bar">
+        <span class="title-main">Materials</span>
+        <!-- <img src="./assets/images/3d-meeting-space/add-square.svg" alt="" /> -->
+      </div>
+      <div class="info-cont">
+        <div class="info-items">
+          <a id="reference-material-test" class="info-item">
+            <img src="./assets/images/3d-meeting-space/presention-chart.svg" alt="" />
+            <span class="">points</span>
+          </a>
+          <a class="info-item">
+            <img src="./assets/images/3d-meeting-space/presention-chart.svg" alt="" />
+            <span class="">Reference images</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- notes Container -->
+    <div id="notes-cont" class="notes-cont">
+
+      <div id="notes-list-cont">
+        <div>
+          <img id="close-notes" src="./assets/images/3d-meeting-space/close.svg" alt=""
+            style="position: absolute; right: -0.5rem; top: -0.5rem;" />
+        </div>
+        <div class="title-bar">
+          <span class="title-main">Meeting Notes</span>
+          <img id="add-note-btn" src="./assets/images/3d-meeting-space/add-square.svg" alt="" />
+        </div>
+        <div class="user-notes-cont">
+          <div class="info-items" id="notes-list">
+
+          </div>
+        </div>
+      </div>
+      <div id="create-note-cont">
+        <div class="title-bar">
+          <img id="back-to-notes-list-btn" src="./assets/images/3d-meeting-space/arrow-square-left.svg" alt="" />
+          <span class="title-main">New note</span>
+        </div>
+        <div id="create-note-box">
+          <!-- <div id="note-et"></div> -->
+          <input type="text" id="note-et" name="note_text" placeholder="Type here...">
+
+          <button id="save-note-btn">Save note</button>
+        </div>
+        <!-- <div id="create-note-box">
+          <form action="">
+            <input id="save-note-btn" type="submit" value="Save note">
+          </form>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="meeting-left-cont me-2">
+      <div class="items row">
+        <img id="notes-btn" src="./assets/images/3d-meeting-space/clipboard-text.svg" alt="" />
+        <img id="materials-btn" src="./assets/images/3d-meeting-space/presention-chart.svg" alt="" />
+      </div>
+    </div>
+
+    <!-- Members Container -->
+    <div id="members-cont" class="members-cont">
+      <div>
+        <img id="close-member" src="./assets/images/3d-meeting-space/close.svg" alt=""
+          style="position: absolute; right: -0.5rem; top: -0.5rem;" />
+      </div>
+      <div class="meeting-info d-flex">
+        <div class="title-bar col text-center">
+          <span class="title-main">Time</span>
+          <div id="time-box" class="title-box col">
+            <span id="time" class="type-bold"></span>
+
+          </div>
+        </div>
+        <div class="title-bar col text-center">
+          <span class="title-main col">Date</span>
+          <div class="title-box-outer">
+            <div id="date-box" class="title-box col">
+              <span id="date" class="type-bold"></span>
+              <span id="month"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="members-inner-cont">
+        <div class="title-bar">
+          <span class="title-main">Members</span>
+        </div>
+        <div class="info-cont">
+          <div id="member-data" class="info-items member-items col">
+            <!-- <div class="info-item">
+              <img class="member-pic" src="./assets/images/3d-meeting-space/dummy-dp.svg" alt="member-pic" />
+              <span class="member-name"></span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Members Button -->
+    <div class="meeting-right-cont">
+      <div class="items" id="btn-member">
+        <div class="item-1">
+          <img src="./assets/images/3d-meeting-space/people.svg" alt="" />
+          <span id="members-count">Members</span>
+        </div>
+        <img id="members-btn" src="./assets/images/3d-meeting-space/info-circle.svg" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="position-absolute end-0 top-0">
+    <button type="button" id="inItScreen">Share Screen</button>
+    <button type="button" id="muteVideo">Mute Video</button>
+    <br><label> Local Audio Level :</label>
+    <input type="range" min="0" id="localAudioVolume" max="100" step="1"><br>
+    <label> Remote Audio Level :</label>
+    <input type="range" min="0" id="remoteAudioVolume" max="100" step="1">
+  </div> -->
+
+
+  <script src="libs/Detector.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+  <script src="libs/inflate.min.js"></script>
+  <script src="libs/FBXLoader.js"></script>
+  <script src="libs/stats.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.js"></script> -->
+
+  <script type="text/javascript" src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
+
+
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script src="https://cdn.socket.io/socket.io-2.2.0.js" crossorigin="anonymous"></script>
+
+  <script src="libs/AgoraRTC_N-4.7.3.js"></script>
+  <script src="libs/rtc_agora.js"></script>
+
+  <script src="libs/toon3d.js"></script>
+  <script src="game.js"></script>
+
+  <script>
+    var game;
+    document.addEventListener("DOMContentLoaded", function () {
+      game = new Game();
+    });
+  </script>
+
+  <script>
+
+    const params = new URLSearchParams(window.location.search)
+    for (const param of params) {
+      console.log("::::" + param)
+      if (params.has('mId')) {
+        var meetingId = params.get('mId');
+        fetchMeeting(meetingId)
+      }
+
+    }
+    // fetch meeting name
+    function fetchMeeting(meetingId) {
+      axios.post('/api/fetchMeetingDetails', { meeting_id: meetingId }).then(async (response) => {
+        // console.log("response", response.data.users.length)
+        let { company_id, meetingName, users, meetingDate, meetingTime, meeting_id } = response.data.meeting;
+        var userslist = "";
+        $("#meeting-name").text(meetingName);
+
+        var time = meetingTime;
+        time = time.substring(0, 5);
+        $("#time").text(time);
+
+        var value = meetingDate;
+        var year = value.substring(0, 4);
+        var month = value.substring(5, 7);
+        var day = value.substring(8, 10);
+        // var str = "{day:" + day + ",month:" + month + ",year:" + year + "}";
+
+        const date = new Date(year, month, day);  // 2009-11-10
+        const sMonth = date.toLocaleString('default', { month: 'long' });
+        // console.log(month);
+        $("#date").text(day)
+        $("#month").text(sMonth)
+        // users.forEach(element => {
+        //   userslist += `<div class="info-item">
+        //                 <img class="member-pic" src="./assets/images/3d-meeting-space/dummy-dp.svg" alt="member-pic" />
+        //                 <span class="member-name">`+ element + `</span>
+        //               </div>`
+        // });
+        // $('#member-data').html(userslist);
+        console.log("meeting name");
+      }).catch(async (errors) => {
+      })
+    }
+
+
+    // members fetch
+    // function fetch() {
+    //   $.ajax({
+    //     url: "meetingroom.json",
+    //     type: "GET",
+    //     dataType: "JSON",
+    //     data: JSON.stringify({}),
+    //     success: function (data) {
+
+    //       // member name & img
+    //       var text = "";
+    //       for (let x = 0; x < data[15].userId.length; x++) {
+    //         // console.log("item", item.name)
+    //         text += `<div class="info-item">
+		// 			<img class="member-pic" src="" alt="member-pic" />
+		// 			<span class="member-name">` + data[15].userId[x] + `</span>
+		// 			</div>`;
+    //       }
+    //       $("#member-data").html(text);
+
+    //       // meeting time & date
+    //       var time = "";
+    //       var date = "";
+    //       time += `<div class="title-box-inner" class="type-bold"><span id="time-hr">` + data[15].timehr + `</span> : <span id="time-min">` + data[15].timemin + `</span></div><span id="time-am-pm">` + data[15].timeampm + `</span>`;
+    //       date += `<span id="date" class="type-bold">` + data[15].datedate + `</span><span id="month">` + data[15].datemonth + `</span>`;
+    //       $("#time-box").html(time);
+    //       $("#date-box").html(date);
+    //     }
+    //   });
+    // }
+  </script>
+  <script type="text/javascript">
+
+    const btnCloseMaterialview = document.getElementById("close-material-view-container");
+    const btnFullScreenMaterialview = document.getElementById("full-material-view-container");
+    btnCloseMaterialview.addEventListener("click", closeView);
+    btnFullScreenMaterialview.addEventListener("click", fullView);
+    function closeView() {
+      $("#material-view-container").addClass('d-none');
+      stopSharing()
+    }
+
+    function fullView() {
+      $("#material-view-container").addClass('full-screen');
+    }
+
+
+
+
+    var flag_members = false;
+    const btnMember = document.getElementById("btn-member");
+    const btnCloseMember = document.getElementById("close-member");
+    btnMember.addEventListener("click", memberCardToggle);
+    btnCloseMember.addEventListener("click", memberCardToggle);
+    function memberCardToggle() {
+      if (!flag_members) {
+        flag_materials = false;
+        document.getElementById("materials-cont").style.visibility = "hidden";
+
+        flag_notes = false;
+        document.getElementById("notes-list-cont").style.visibility = "hidden";
+        document.getElementById("create-note-cont").style.visibility = "hidden";
+
+
+        flag_members = true;
+        document.getElementById("members-cont").style.visibility = "visible";
+      } else {
+        flag_members = false;
+        document.getElementById("members-cont").style.visibility = "hidden";
+      }
+    }
+
+    var flag_materials = false;
+    const btnMaterials = document.getElementById("materials-btn");
+    const btnCloseMaterials = document.getElementById("close-materials");
+    btnMaterials.addEventListener("click", materialsCardToggle);
+    btnCloseMaterials.addEventListener("click", materialsCardToggle);
+    function materialsCardToggle() {
+      if (!flag_materials) {
+        flag_members = false;
+        document.getElementById("members-cont").style.visibility = "hidden";
+
+        flag_notes = false;
+        document.getElementById("notes-list-cont").style.visibility = "hidden";
+        document.getElementById("create-note-cont").style.visibility = "hidden";
+
+
+        flag_materials = true;
+        document.getElementById("materials-cont").style.visibility = "visible";
+      } else {
+        flag_materials = false;
+        document.getElementById("materials-cont").style.visibility = "hidden";
+      }
+    }
+
+
+    var flag_notes = false;
+    const btnNotes = document.getElementById("notes-btn");
+    const btnCloseNotes = document.getElementById("close-notes");
+    btnNotes.addEventListener("click", notesCardToggle);
+    btnCloseNotes.addEventListener("click", notesCardToggle);
+    function notesCardToggle() {
+      if (!flag_notes) {
+        flag_materials = false;
+        document.getElementById("materials-cont").style.visibility = "hidden";
+
+        flag_members = false;
+        document.getElementById("members-cont").style.visibility = "hidden";
+
+        flag_notes = true;
+        document.getElementById("notes-list-cont").style.visibility = "visible";
+        document.getElementById("create-note-cont").style.visibility = "hidden";
+
+      } else {
+        flag_notes = false;
+        document.getElementById("notes-list-cont").style.visibility = "hidden";
+      }
+    }
+
+    const addNoteBtn = document.getElementById("add-note-btn");
+    addNoteBtn.addEventListener("click", function () {
+      document.getElementById("notes-list-cont").style.visibility = "hidden";
+      document.getElementById("create-note-cont").style.visibility = "visible";
+    });
+    const backToNotesListBtn = document.getElementById("back-to-notes-list-btn");
+    backToNotesListBtn.addEventListener("click", function () {
+      for (const param of params) {
+        if (params.has('mId')) {
+          var meetingId = params.get('mId');
+          fetchNotes(meetingId)
+        }
+      }
+      document.getElementById("create-note-cont").style.visibility = "hidden";
+      document.getElementById("notes-list-cont").style.visibility = "visible";
+    });
+
+    const saveNoteBtn = document.getElementById("save-note-btn");
+    saveNoteBtn.addEventListener("click", function () {
+
+      for (const param of params) {
+        if (params.has('mId')) {
+          var meetingId = params.get('mId');
+          axios.post('/api/saveNotes', { note: $("#note-et").val(), uid: localStorage.getItem("uid"), company_id: localStorage.getItem("company_id"), meeting_id: meetingId }).then(async (response) => {
+
+            // let { company_id, meetingName, users, meetingDate, meetingTime, meeting_id } = response.data.meeting;
+            fetchNotes(meetingId)
+            document.getElementById("create-note-cont").style.visibility = "hidden";
+            document.getElementById("notes-list-cont").style.visibility = "visible";
+
+          }).catch(async (errors) => {
+          })
+        }
+      }
+    });
+
+    // fetch Notes
+    function fetchNotes(meetingId) {
+      axios.post('/api/fetchMeetingsNotes', { uid: localStorage.getItem("uid"), company_id: localStorage.getItem("company_id"), meeting_id: meetingId }).then(async (response) => {
+        let notes = response.data.notes
+        var noteslist = "";
+
+        notes.forEach(element => {
+          noteslist += `<p>
+                        `+ element.note + `
+                      </p><hr>`
+        });
+        $('#notes-list').html(noteslist);
+
+      }).catch(async (errors) => {
+      })
+    }
+
+
+  </script>
+</body>
+
+</html>
